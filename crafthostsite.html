@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Craft Hosting - Ücretsiz Sunucu Hizmetleri</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            light: '#4da3ff',
+                            DEFAULT: '#1a75ff',
+                            dark: '#0052cc',
+                        },
+                        secondary: {
+                            light: '#4da3ff',
+                            DEFAULT: '#1a75ff',
+                            dark: '#0052cc',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .server-glow {
+            filter: drop-shadow(0 0 8px rgba(26, 117, 255, 0.6));
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #1a75ff 0%, #0052cc 100%);
+        }
+        
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .btn-hover:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 30px rgba(0, 82, 204, 0.2);
+            background: linear-gradient(135deg, #1a75ff 0%, #0052cc 100%);
+        }
+        
+        .feature-card:hover .feature-icon,
+        .feature-card:hover .feature-title,
+        .feature-card:hover .feature-text {
+            color: white;
+        }
+        
+        .feature-icon, .feature-title, .feature-text {
+            transition: color 0.3s ease;
+        }
+        
+        .step-card {
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-15px);
+            border-color: #1a75ff;
+            box-shadow: 0 15px 30px rgba(26, 117, 255, 0.2);
+        }
+        
+        .step-number {
+            transition: all 0.3s ease;
+        }
+        
+        .step-card:hover .step-number {
+            background-color: white;
+            color: #1a75ff;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <header class="bg-white shadow-md fixed w-full z-50 animate__animated animate__fadeInDown">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="flex items-center">
+
+                    <div class="mr-2 animate__animated animate__fadeIn animate__delay-300">
+                        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="4" width="20" height="4" rx="1" fill="#1a75ff"/>
+                            <rect x="2" y="10" width="20" height="4" rx="1" fill="#1a75ff"/>
+                            <rect x="2" y="16" width="20" height="4" rx="1" fill="#1a75ff"/>
+                            <circle cx="5" cy="6" r="1" fill="#4da3ff"/>
+                            <circle cx="5" cy="12" r="1" fill="#4da3ff"/>
+                            <circle cx="5" cy="18" r="1" fill="#4da3ff"/>
+                        </svg>
+                    </div>
+                    <div class="text-2xl font-bold animate__animated animate__fadeIn animate__delay-400">
+                        <span class="text-black">Craft</span> Hosting
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="https://discord.gg/HKqXM64du2" target="_blank" class="btn-hover gradient-bg text-white px-4 py-2 rounded-lg font-medium flex items-center animate__animated animate__fadeInRight animate__delay-500">
+                    <i class="fab fa-discord mr-2"></i> Discord'a Katıl
+                </a>
+                <a href="https://panel.crafthosting.com.tr" target="_blank" class="btn-hover bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-lg font-medium flex items-center animate__animated animate__fadeInRight animate__delay-600">
+                    <i class="fas fa-server mr-2"></i> Yönetim Paneli
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="pt-24 pb-16 md:pt-32 md:pb-24">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="w-full md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gray-800 leading-tight animate__animated animate__fadeInUp">
+                        Craft Hosting ile <span class="text-primary">Ücretsiz Sunucunuzu</span> Hemen Kurun
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8 animate__animated animate__fadeInUp animate__delay-200">
+                        Discord sunucumuza arkadaşlarını davet et ve karşılığında Minecraft sunucusu ve Discord bot sunucusu kazan. Yüksek performans, 7/24 destek ve DDoS koruması ile hizmetinizdeyiz.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 animate__animated animate__fadeInUp animate__delay-400">
+                        <a href="https://discord.gg/HKqXM64du2" target="_blank" class="btn-hover gradient-bg text-white px-6 py-3 rounded-lg font-medium text-center">
+                            <i class="fab fa-discord mr-2"></i> Discord'a Katıl
+                        </a>
+                        <a href="https://panel.crafthosting.com.tr" target="_blank" class="btn-hover bg-white border border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-lg font-medium text-center">
+                            <i class="fas fa-server mr-2"></i> Yönetim Paneli
+                        </a>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 flex justify-center animate__animated animate__zoomIn animate__delay-600">
+
+                    <div class="server-container">
+                        <svg class="w-80 h-80 server-glow float-animation" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                            <rect x="30" y="20" width="140" height="160" rx="6" fill="#0052cc" />
+                            
+
+                            <rect x="35" y="30" width="130" height="30" rx="3" fill="#1a75ff" />
+                            <rect x="35" y="70" width="130" height="30" rx="3" fill="#1a75ff" />
+                            <rect x="35" y="110" width="130" height="30" rx="3" fill="#1a75ff" />
+                            <rect x="35" y="150" width="130" height="20" rx="3" fill="#1a75ff" />
+                            
+
+                            <circle cx="45" cy="45" r="4" fill="#4da3ff" />
+                            <circle cx="45" cy="85" r="4" fill="#4da3ff" />
+                            <circle cx="45" cy="125" r="4" fill="#4da3ff" />
+                            
+
+                            <rect x="60" y="40" width="20" height="10" rx="2" fill="#0052cc" />
+                            <rect x="60" y="80" width="20" height="10" rx="2" fill="#0052cc" />
+                            <rect x="60" y="120" width="20" height="10" rx="2" fill="#0052cc" />
+                            
+
+                            <rect x="90" y="40" width="60" height="2" rx="1" fill="#4da3ff" />
+                            <rect x="90" y="45" width="40" height="2" rx="1" fill="#4da3ff" />
+                            <rect x="90" y="80" width="60" height="2" rx="1" fill="#4da3ff" />
+                            <rect x="90" y="85" width="40" height="2" rx="1" fill="#4da3ff" />
+                            <rect x="90" y="120" width="60" height="2" rx="1" fill="#4da3ff" />
+                            <rect x="90" y="125" width="40" height="2" rx="1" fill="#4da3ff" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="nasil-calisir" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4 text-gray-800 reveal">Nasıl Çalışır?</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto reveal">Sadece üç basit adımda kendi sunucunuza sahip olun.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <div class="step-card bg-white p-6 rounded-xl shadow-md reveal">
+                    <div class="step-number w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-bold mb-4">1</div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Discord Sunucumuza Katıl</h3>
+                    <p class="text-gray-600">İlk adım olarak Discord sunucumuza katılın ve topluluğumuzun bir parçası olun.</p>
+                </div>
+
+                <div class="step-card bg-white p-6 rounded-xl shadow-md reveal">
+                    <div class="step-number w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-bold mb-4">2</div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Arkadaşlarını Davet Et</h3>
+                    <p class="text-gray-600">Discord sunucumuza arkadaşlarını davet et.</p>
+                </div>
+
+                <div class="step-card bg-white p-6 rounded-xl shadow-md reveal">
+                    <div class="step-number w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-bold mb-4">3</div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Sunucunu Kur</h3>
+                    <p class="text-gray-600">Yönetim panelimiz üzerinden kazandığın kaynakları kullanarak kendi sunucunu hemen kur.</p>
+                </div>
+            </div>
+            <div class="text-center mt-12 reveal">
+                <a href="https://discord.gg/HKqXM64du2" target="_blank" class="btn-hover gradient-bg text-white px-8 py-4 rounded-lg font-medium inline-block">
+                    Hemen Başla
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="ozellikler" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4 text-gray-800 reveal">Neden Craft Hosting?</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto reveal">Craft Hosting olarak en kaliteli hizmeti en uygun şekilde sunuyoruz.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                <div class="feature-card bg-white p-6 rounded-xl shadow-md reveal">
+                    <div class="feature-icon text-primary text-4xl mb-4">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title text-xl font-semibold mb-3 text-gray-800">DDoS Koruması</h3>
+                    <p class="feature-text text-gray-600">Güçlü DDoS koruması ile sunucularınız her zaman güvende ve erişilebilir durumda.</p>
+                </div>
+
+                <div class="feature-card bg-white p-6 rounded-xl shadow-md reveal">
+                    <div class="feature-icon text-primary text-4xl mb-4">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="feature-title text-xl font-semibold mb-3 text-gray-800">Yüksek Performans</h3>
+                    <p class="feature-text text-gray-600">Yüksek performanslı donanımlarımız sayesinde sunucularınız hızlı ve sorunsuz çalışır.</p>
+                </div>
+
+                <div class="feature-card bg-white p-6 rounded-xl shadow-md reveal">
+                    <div class="feature-icon text-primary text-4xl mb-4">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="feature-title text-xl font-semibold mb-3 text-gray-800">7/24 Destek</h3>
+                    <p class="feature-text text-gray-600">Teknik ekibimiz her an yanınızda, sorularınıza ve sorunlarınıza hızlı çözümler sunar.</p>
+                </div>
+
+                <div class="feature-card bg-white p-6 rounded-xl shadow-md reveal">
+                    <div class="feature-icon text-primary text-4xl mb-4">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title text-xl font-semibold mb-3 text-gray-800">%99.9 Uptime</h3>
+                    <p class="feature-text text-gray-600">Sunucularımız %99.9 çalışma süresi garantisi ile kesintisiz hizmet sunar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 gradient-bg">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6 text-white reveal">Ne Bekliyorsun?</h2>
+            <p class="text-xl text-white mb-8 max-w-2xl mx-auto reveal">Sen de Craft Hosting ile ücretsiz sunucunu kap! Arkadaşlarını davet et, Minecraft veya Discord bot sunucunu hemen kur.</p>
+            <a href="https://discord.gg/HKqXM64du2" target="_blank" class="btn-hover bg-white text-primary px-8 py-4 rounded-lg font-medium inline-block reveal">
+                <i class="fab fa-discord mr-2"></i> Discord Sunucumuza Katıl
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+
+                    <div class="mr-2">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="4" width="20" height="4" rx="1" fill="#4da3ff"/>
+                            <rect x="2" y="10" width="20" height="4" rx="1" fill="#4da3ff"/>
+                            <rect x="2" y="16" width="20" height="4" rx="1" fill="#4da3ff"/>
+                            <circle cx="5" cy="6" r="1" fill="#4da3ff"/>
+                            <circle cx="5" cy="12" r="1" fill="#4da3ff"/>
+                            <circle cx="5" cy="18" r="1" fill="#4da3ff"/>
+                        </svg>
+                    </div>
+                    <div class="text-2xl font-bold">
+                        <span class="text-white">Craft</span> Hosting
+                    </div>
+                </div>
+                <div class="text-center text-gray-400">
+                    &copy; 2025 Craft Hosting. Tüm hakları saklıdır.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function() {
+
+            function reveal() {
+                const reveals = document.querySelectorAll('.reveal');
+                
+                for (let i = 0; i < reveals.length; i++) {
+                    const windowHeight = window.innerHeight;
+                    const elementTop = reveals[i].getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveals[i].classList.add('active');
+                    }
+                }
+            }
+            
+            window.addEventListener('scroll', reveal);
+            
+
+            setTimeout(reveal, 100);
+        });
+    </script>
+</body>
+</html>
