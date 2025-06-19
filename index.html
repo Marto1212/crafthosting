@@ -3,339 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Craft Hosting - Ücretsiz Sunucu Hizmetleri</title>
+    <title>Craft Hosting - Yakında Sizlerle</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            light: '#4da3ff',
-                            DEFAULT: '#1a75ff',
-                            dark: '#0052cc',
-                        },
-                        secondary: {
-                            light: '#4da3ff',
-                            DEFAULT: '#1a75ff',
-                            dark: '#0052cc',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
         
-        html {
-            scroll-behavior: smooth;
-        }
-        
         body {
             font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+            overflow-x: hidden;
         }
         
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
         }
         
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .server-glow {
-            filter: drop-shadow(0 0 8px rgba(26, 117, 255, 0.6));
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, #1a75ff 0%, #0052cc 100%);
-        }
-        
-        .btn-hover {
-            transition: all 0.3s ease;
-        }
-        
-        .btn-hover:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
-        }
-        
-        .feature-card {
-            transition: all 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 15px 30px rgba(0, 82, 204, 0.2);
-            background: linear-gradient(135deg, #1a75ff 0%, #0052cc 100%);
-        }
-        
-        .feature-card:hover .feature-icon,
-        .feature-card:hover .feature-title,
-        .feature-card:hover .feature-text {
-            color: white;
-        }
-        
-        .feature-icon, .feature-title, .feature-text {
-            transition: color 0.3s ease;
-        }
-        
-        .step-card {
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-        
-        .step-card:hover {
-            transform: translateY(-15px);
-            border-color: #1a75ff;
-            box-shadow: 0 15px 30px rgba(26, 117, 255, 0.2);
-        }
-        
-        .step-number {
-            transition: all 0.3s ease;
-        }
-        
-        .step-card:hover .step-number {
-            background-color: white;
-            color: #1a75ff;
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.5);
+            animation: float 8s infinite ease-in-out;
         }
         
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            25% {
+                transform: translateY(-20px) translateX(10px);
+            }
+            50% {
+                transform: translateY(-10px) translateX(20px);
+            }
+            75% {
+                transform: translateY(-30px) translateX(-10px);
+            }
         }
         
-        .float-animation {
-            animation: float 3s ease-in-out infinite;
+        .glow {
+            filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.8));
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .discord-btn {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .discord-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(30, 64, 175, 0.4);
+        }
+        
+        .discord-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .discord-btn:hover::before {
+            left: 100%;
+        }
+        
+        .server-icon {
+            animation: float 6s infinite ease-in-out;
         }
     </style>
 </head>
-<body class="bg-gray-50">
-
-    <header class="bg-white shadow-md fixed w-full z-50 animate__animated animate__fadeInDown">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center">
-                <div class="flex items-center">
-
-                    <div class="mr-2 animate__animated animate__fadeIn animate__delay-300">
-                        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="2" y="4" width="20" height="4" rx="1" fill="#1a75ff"/>
-                            <rect x="2" y="10" width="20" height="4" rx="1" fill="#1a75ff"/>
-                            <rect x="2" y="16" width="20" height="4" rx="1" fill="#1a75ff"/>
-                            <circle cx="5" cy="6" r="1" fill="#4da3ff"/>
-                            <circle cx="5" cy="12" r="1" fill="#4da3ff"/>
-                            <circle cx="5" cy="18" r="1" fill="#4da3ff"/>
-                        </svg>
-                    </div>
-                    <div class="text-2xl font-bold animate__animated animate__fadeIn animate__delay-400">
-                        <span class="text-black">Craft</span> Hosting
-                    </div>
-                </div>
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <div class="min-h-screen flex flex-col items-center justify-center relative z-10 px-4">
+        <div class="text-center max-w-3xl mx-auto">
+            <div class="mb-8 server-icon">
+                <svg class="w-24 h-24 mx-auto glow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 6C3 4.34315 4.34315 3 6 3H18C19.6569 3 21 4.34315 21 6V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18V6Z" stroke="#3b82f6" stroke-width="2"/>
+                    <path d="M7 8H17M7 12H17M7 16H13" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+                </svg>
             </div>
-            <div class="flex items-center space-x-4">
-                <a href="https://discord.gg/HKqXM64du2" target="_blank" class="btn-hover gradient-bg text-white px-4 py-2 rounded-lg font-medium flex items-center animate__animated animate__fadeInRight animate__delay-500">
-                    <i class="fab fa-discord mr-2"></i> Discord'a Katıl
-                </a>
-                <a href="https://panel.crafthosting.com.tr" target="_blank" class="btn-hover bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-lg font-medium flex items-center animate__animated animate__fadeInRight animate__delay-600">
-                    <i class="fas fa-server mr-2"></i> Yönetim Paneli
+            
+            <h1 class="text-5xl md:text-6xl font-bold text-white mb-4 pulse">
+                <span class="text-blue-500">Craft</span> Hosting
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-blue-200 mb-12">Yakında Sizlerle...</p>
+            
+            <div class="max-w-md mx-auto bg-gray-900 p-6 rounded-xl border border-blue-900 shadow-lg">
+                <p class="text-blue-200 mb-4">Hizmetlerimiz hakkında bilgi almak ve güncellemelerden haberdar olmak için Discord sunucumuza katılın!</p>
+                
+                <a href="https://discord.gg/HKqXM64du2" target="_blank" class="discord-btn flex items-center justify-center gap-2 py-3 px-6 rounded-lg text-white font-medium text-lg w-full">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                    </svg>
+                    Discord Sunucumuza Katıl
                 </a>
             </div>
         </div>
-    </header>
-
-    <section class="pt-24 pb-16 md:pt-32 md:pb-24">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="w-full md:w-1/2 mb-10 md:mb-0">
-                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gray-800 leading-tight animate__animated animate__fadeInUp">
-                        Craft Hosting ile <span class="text-primary">Ücretsiz Sunucunuzu</span> Hemen Kurun
-                    </h1>
-                    <p class="text-lg text-gray-600 mb-8 animate__animated animate__fadeInUp animate__delay-200">
-                        Discord sunucumuza arkadaşlarını davet et ve karşılığında Minecraft sunucusu ve Discord bot sunucusu kazan. Yüksek performans, 7/24 destek ve DDoS koruması ile hizmetinizdeyiz.
-                    </p>
-                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 animate__animated animate__fadeInUp animate__delay-400">
-                        <a href="https://discord.gg/HKqXM64du2" target="_blank" class="btn-hover gradient-bg text-white px-6 py-3 rounded-lg font-medium text-center">
-                            <i class="fab fa-discord mr-2"></i> Discord'a Katıl
-                        </a>
-                        <a href="https://panel.crafthosting.com.tr" target="_blank" class="btn-hover bg-white border border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-lg font-medium text-center">
-                            <i class="fas fa-server mr-2"></i> Yönetim Paneli
-                        </a>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2 flex justify-center animate__animated animate__zoomIn animate__delay-600">
-
-                    <div class="server-container">
-                        <svg class="w-80 h-80 server-glow float-animation" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-
-                            <rect x="30" y="20" width="140" height="160" rx="6" fill="#0052cc" />
-                            
-
-                            <rect x="35" y="30" width="130" height="30" rx="3" fill="#1a75ff" />
-                            <rect x="35" y="70" width="130" height="30" rx="3" fill="#1a75ff" />
-                            <rect x="35" y="110" width="130" height="30" rx="3" fill="#1a75ff" />
-                            <rect x="35" y="150" width="130" height="20" rx="3" fill="#1a75ff" />
-                            
-
-                            <circle cx="45" cy="45" r="4" fill="#4da3ff" />
-                            <circle cx="45" cy="85" r="4" fill="#4da3ff" />
-                            <circle cx="45" cy="125" r="4" fill="#4da3ff" />
-                            
-
-                            <rect x="60" y="40" width="20" height="10" rx="2" fill="#0052cc" />
-                            <rect x="60" y="80" width="20" height="10" rx="2" fill="#0052cc" />
-                            <rect x="60" y="120" width="20" height="10" rx="2" fill="#0052cc" />
-                            
-
-                            <rect x="90" y="40" width="60" height="2" rx="1" fill="#4da3ff" />
-                            <rect x="90" y="45" width="40" height="2" rx="1" fill="#4da3ff" />
-                            <rect x="90" y="80" width="60" height="2" rx="1" fill="#4da3ff" />
-                            <rect x="90" y="85" width="40" height="2" rx="1" fill="#4da3ff" />
-                            <rect x="90" y="120" width="60" height="2" rx="1" fill="#4da3ff" />
-                            <rect x="90" y="125" width="40" height="2" rx="1" fill="#4da3ff" />
-                        </svg>
-                    </div>
-                </div>
-            </div>
+        
+        <div class="mt-12 text-blue-300 text-sm">
+            <p>© 2025 Craft Hosting. Tüm hakları saklıdır.</p>
         </div>
-    </section>
-
-    <section id="nasil-calisir" class="py-16 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-4 text-gray-800 reveal">Nasıl Çalışır?</h2>
-            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto reveal">Sadece üç basit adımda kendi sunucunuza sahip olun.</p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-                <div class="step-card bg-white p-6 rounded-xl shadow-md reveal">
-                    <div class="step-number w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-bold mb-4">1</div>
-                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Discord Sunucumuza Katıl</h3>
-                    <p class="text-gray-600">İlk adım olarak Discord sunucumuza katılın ve topluluğumuzun bir parçası olun.</p>
-                </div>
-
-                <div class="step-card bg-white p-6 rounded-xl shadow-md reveal">
-                    <div class="step-number w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-bold mb-4">2</div>
-                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Arkadaşlarını Davet Et</h3>
-                    <p class="text-gray-600">Discord sunucumuza arkadaşlarını davet et.</p>
-                </div>
-
-                <div class="step-card bg-white p-6 rounded-xl shadow-md reveal">
-                    <div class="step-number w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-bold mb-4">3</div>
-                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Sunucunu Kur</h3>
-                    <p class="text-gray-600">Yönetim panelimiz üzerinden kazandığın kaynakları kullanarak kendi sunucunu hemen kur.</p>
-                </div>
-            </div>
-            <div class="text-center mt-12 reveal">
-                <a href="https://discord.gg/HKqXM64du2" target="_blank" class="btn-hover gradient-bg text-white px-8 py-4 rounded-lg font-medium inline-block">
-                    Hemen Başla
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="ozellikler" class="py-16">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-4 text-gray-800 reveal">Neden Craft Hosting?</h2>
-            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto reveal">Craft Hosting olarak en kaliteli hizmeti en uygun şekilde sunuyoruz.</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-
-                <div class="feature-card bg-white p-6 rounded-xl shadow-md reveal">
-                    <div class="feature-icon text-primary text-4xl mb-4">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="feature-title text-xl font-semibold mb-3 text-gray-800">DDoS Koruması</h3>
-                    <p class="feature-text text-gray-600">Güçlü DDoS koruması ile sunucularınız her zaman güvende ve erişilebilir durumda.</p>
-                </div>
-
-                <div class="feature-card bg-white p-6 rounded-xl shadow-md reveal">
-                    <div class="feature-icon text-primary text-4xl mb-4">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3 class="feature-title text-xl font-semibold mb-3 text-gray-800">Yüksek Performans</h3>
-                    <p class="feature-text text-gray-600">Yüksek performanslı donanımlarımız sayesinde sunucularınız hızlı ve sorunsuz çalışır.</p>
-                </div>
-
-                <div class="feature-card bg-white p-6 rounded-xl shadow-md reveal">
-                    <div class="feature-icon text-primary text-4xl mb-4">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3 class="feature-title text-xl font-semibold mb-3 text-gray-800">7/24 Destek</h3>
-                    <p class="feature-text text-gray-600">Teknik ekibimiz her an yanınızda, sorularınıza ve sorunlarınıza hızlı çözümler sunar.</p>
-                </div>
-
-                <div class="feature-card bg-white p-6 rounded-xl shadow-md reveal">
-                    <div class="feature-icon text-primary text-4xl mb-4">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 class="feature-title text-xl font-semibold mb-3 text-gray-800">%99.9 Uptime</h3>
-                    <p class="feature-text text-gray-600">Sunucularımız %99.9 çalışma süresi garantisi ile kesintisiz hizmet sunar.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-16 gradient-bg">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-6 text-white reveal">Ne Bekliyorsun?</h2>
-            <p class="text-xl text-white mb-8 max-w-2xl mx-auto reveal">Sen de Craft Hosting ile ücretsiz sunucunu kap! Arkadaşlarını davet et, Minecraft veya Discord bot sunucunu hemen kur.</p>
-            <a href="https://discord.gg/HKqXM64du2" target="_blank" class="btn-hover bg-white text-primary px-8 py-4 rounded-lg font-medium inline-block reveal">
-                <i class="fab fa-discord mr-2"></i> Discord Sunucumuza Katıl
-            </a>
-        </div>
-    </section>
-
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-wrap justify-between items-center">
-                <div class="flex items-center mb-4 md:mb-0">
-
-                    <div class="mr-2">
-                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="2" y="4" width="20" height="4" rx="1" fill="#4da3ff"/>
-                            <rect x="2" y="10" width="20" height="4" rx="1" fill="#4da3ff"/>
-                            <rect x="2" y="16" width="20" height="4" rx="1" fill="#4da3ff"/>
-                            <circle cx="5" cy="6" r="1" fill="#4da3ff"/>
-                            <circle cx="5" cy="12" r="1" fill="#4da3ff"/>
-                            <circle cx="5" cy="18" r="1" fill="#4da3ff"/>
-                        </svg>
-                    </div>
-                    <div class="text-2xl font-bold">
-                        <span class="text-white">Craft</span> Hosting
-                    </div>
-                </div>
-                <div class="text-center text-gray-400">
-                    &copy; 2025 Craft Hosting. Tüm hakları saklıdır.
-                </div>
-            </div>
-        </div>
-    </footer>
+    </div>
 
     <script>
 
-        document.addEventListener("DOMContentLoaded", function() {
-
-            function reveal() {
-                const reveals = document.querySelectorAll('.reveal');
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
                 
-                for (let i = 0; i < reveals.length; i++) {
-                    const windowHeight = window.innerHeight;
-                    const elementTop = reveals[i].getBoundingClientRect().top;
-                    const elementVisible = 150;
-                    
-                    if (elementTop < windowHeight - elementVisible) {
-                        reveals[i].classList.add('active');
-                    }
-                }
+                const size = Math.random() * 15 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                particle.style.opacity = Math.random() * 0.5 + 0.1;
+                
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                
+                particlesContainer.appendChild(particle);
             }
-            
-            window.addEventListener('scroll', reveal);
-            
-
-            setTimeout(reveal, 100);
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
         });
     </script>
 </body>
